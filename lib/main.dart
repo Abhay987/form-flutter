@@ -19,11 +19,10 @@ class Homepage extends StatelessWidget {
       body: Form(
           key: gbk,
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 100),
+            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Enter Username : "),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -31,23 +30,38 @@ class Homepage extends StatelessWidget {
                     fillColor: Colors.red,
                     focusColor: Colors.black,
                     hoverColor: Colors.green,
-                    //  helperText:"Include String and numeric"
-                    // hintText: "Username",
-                    // hintStyle: TextStyle(color: Colors.red),
-                    //  icon: Icon(Icons.person),
+                    /*      helperText:"Include String and numeric"
+                     hintText: "Username",
+                     hintStyle: TextStyle(color: Colors.red),
+                     hintMaxLines: 2,
+                    helperMaxLines: 2,
+                     icon: Icon(Icons.person),
+                      prefixText: "Username :  ",
+                     suffixText: "@gmail.com",
+                    counterText: "Your Username is "
+                      prefix: Text("Hlo"),
+                    , */
                     prefixIcon: Icon(Icons.person),
                     suffixIcon: Icon(Icons.text_fields),
-                    //   icon: Icon(Icons.email),
-                    labelText: "Username",
+                    labelText: "Username/E-mail_ID",
                     labelStyle: TextStyle(color: Colors.deepOrange),
-                    hintMaxLines: 2,
-                    helperMaxLines: 2,
-                    //  prefixText: "Username :  ",
-                    // suffixText: "@gmail.com",
-                    //counterText: "Your Username is "),
+                    icon: Text("Username    : "),
                   ),
                 ),
-                //  TextFormField(),
+                TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(),
+                    fillColor: Colors.red,
+                    focusColor: Colors.black,
+                    hoverColor: Colors.green,
+                    prefixIcon: Icon(Icons.person),
+                    suffixIcon: Icon(Icons.text_fields),
+                    labelText: "Password",
+                    labelStyle: TextStyle(color: Colors.deepOrange),
+                    icon: Text("Password    : "),
+                  ),
+                ),
               ],
             ),
           )),
