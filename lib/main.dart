@@ -18,8 +18,8 @@ class Homepage extends StatelessWidget {
       ),
       body: Form(
           key: gbk,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+          child: Container(
+            padding: EdgeInsets.all(40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -31,17 +31,17 @@ class Homepage extends StatelessWidget {
                     focusColor: Colors.black,
                     hoverColor: Colors.green,
                     /*      helperText:"Include String and numeric"
-                     hintText: "Username",
-                     hintStyle: TextStyle(color: Colors.red),
-                     hintMaxLines: 2,
-                    helperMaxLines: 2,
-                     icon: Icon(Icons.person),
-                      prefixText: "Username :  ",
-                     suffixText: "@gmail.com",
-                    counterText: "Your Username is "
-                      prefix: Text("Hlo"),
-                    , */
-                    prefixIcon: Icon(Icons.person),
+                         hintText: "Username",
+                         hintStyle: TextStyle(color: Colors.red),
+                         hintMaxLines: 2,
+                        helperMaxLines: 2,
+                         icon: Icon(Icons.person),
+                          prefixText: "Username :  ",
+                         suffixText: "@gmail.com",
+                        counterText: "Your Username is "
+                          prefix: Text("Hlo"),
+                        , */
+                    prefixIcon: Icon(Icons.email),
                     suffixIcon: Icon(Icons.text_fields),
                     labelText: "Username/E-mail_ID",
                     labelStyle: TextStyle(color: Colors.deepOrange),
@@ -55,19 +55,26 @@ class Homepage extends StatelessWidget {
                     fillColor: Colors.red,
                     focusColor: Colors.black,
                     hoverColor: Colors.green,
-                    prefixIcon: Icon(Icons.person),
-                    suffixIcon: Icon(Icons.text_fields),
+                    prefixIcon: Icon(Icons.password),
+                    suffixIcon: Icon(Icons.visibility),
                     labelText: "Password",
                     labelStyle: TextStyle(color: Colors.deepOrange),
                     icon: Text("Password    : "),
                   ),
+                  obscureText: true,
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Processing Data")));
-                    },
-                    child: Text("Submit")),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Processing Data")));
+                      },
+                      child: Text("Submit"),
+                    ),
+                  ),
+                ),
               ],
             ),
           )),
