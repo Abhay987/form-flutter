@@ -7,11 +7,20 @@ void main() {
   ));
 }
 
-class Homepage extends StatelessWidget {
-  final gbk = GlobalKey();
+class Homepage extends StatefulWidget {
+  
+
+  @override
+  _HomepageState createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+   final gbk = GlobalKey();
+
+  bool obst = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text("CustomForm"),
@@ -24,6 +33,7 @@ class Homepage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
+
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(),
@@ -48,7 +58,8 @@ class Homepage extends StatelessWidget {
                     icon: Text("Username    : "),
                   ),
                 ),
-                TextFormField(
+                TextFormField( obscureText: obst,
+
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(),
@@ -56,12 +67,16 @@ class Homepage extends StatelessWidget {
                     focusColor: Colors.black,
                     hoverColor: Colors.green,
                     prefixIcon: Icon(Icons.password),
-                    suffixIcon: Icon(Icons.visibility),
+                    suffixIcon: IconButton(onPressed: (){
+                      setState(() {
+                        obst=!obst;
+                      });
+                    }, icon: Icon(obst?Icons.visibility:Icons.visibility_off)),
                     labelText: "Password",
                     labelStyle: TextStyle(color: Colors.deepOrange),
                     icon: Text("Password    : "),
                   ),
-                  obscureText: true,
+                 
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
@@ -79,5 +94,7 @@ class Homepage extends StatelessWidget {
             ),
           )),
     );
-  }
+    
 }
+
+
