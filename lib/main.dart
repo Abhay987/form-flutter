@@ -13,9 +13,29 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final gbk = GlobalKey();
+  final gbk = GlobalKey<FormState>();
+  final mycu = TextEditingController();
+  final mycp = TextEditingController();
 
   bool obst = true;
+  /* @override
+  void initState() {
+    super.initState();
+    mycu.addListener(() {
+      platestvalue();
+    });
+    mycp.addListener(() {
+      platestvalue();
+    });
+  }
+
+  @override
+  void dispose() {
+    mycu.dispose();
+    mycp.dispose();
+    super.dispose();
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +58,13 @@ class _HomepageState extends State<Homepage> {
               //    Spacer()
 
               TextFormField(
+                controller: mycu,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter some Text";
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(),
@@ -66,6 +93,13 @@ class _HomepageState extends State<Homepage> {
               Container(height: 40),
               //   Spacer(),
               TextFormField(
+                controller: mycp,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter some Text";
+                  }
+                  return null;
+                },
                 obscureText: obst,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -92,8 +126,11 @@ class _HomepageState extends State<Homepage> {
                 child: Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Processing Data")));
+                      if (gbk.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Processing Data")));
+                        platestvalue();
+                      }
                     },
                     child: Text("Submit"),
                   ),
@@ -104,5 +141,12 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
+  }
+
+  void platestvalue() {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text("The Username is ${mycu.text}")));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text("The Password is ${mycp.text}")));
   }
 }
